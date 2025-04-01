@@ -50,6 +50,7 @@
 	public var jetFuel:Number;
 	public var skateboard:Number;
 	public var skater:Number;
+	public var rubyFrame:Number;
 	public function Character(tid:Number,tx:Number, ty:Number, tpx:Number, tpy:Number, tvx:Number, tvy:Number, tonob:Boolean,
 	tdire:Number,tcarry:Boolean, tcarryObject:Number, tcarriedBy:Number, tlandTimer:Number, tdeathTimer:Number,tcharState:Number,
 	tstandingOn:Number, tstoodOnBy:Array, tw:Number, th:Number, tweight:Number, tweight2:Number, th2:Number,
@@ -108,6 +109,7 @@
 		jetFuel = tjetFuel;
 		skateboard = tskateboard;
 		skater = tskater;
+		rubyFrame = Math.ceil(Math.random()*36);
 	}
 	function applyForces(grav:Number, control:Boolean,waterUpMaxSpeed:Number){
 		var gravity:Number;
