@@ -51,6 +51,7 @@
 	public var skateboard:Number;
 	public var skater:Number;
 	public var rubyFrame:Number;
+	public var dashTimer:Number;
 	public function Character(tid:Number,tx:Number, ty:Number, tpx:Number, tpy:Number, tvx:Number, tvy:Number, tonob:Boolean,
 	tdire:Number,tcarry:Boolean, tcarryObject:Number, tcarriedBy:Number, tlandTimer:Number, tdeathTimer:Number,tcharState:Number,
 	tstandingOn:Number, tstoodOnBy:Array, tw:Number, th:Number, tweight:Number, tweight2:Number, th2:Number,
@@ -110,12 +111,13 @@
 		skateboard = tskateboard;
 		skater = tskater;
 		rubyFrame = Math.ceil(Math.random()*36);
+		dashTimer = 0;
 	}
 	function applyForces(grav:Number, control:Boolean,waterUpMaxSpeed:Number){
 		var gravity:Number;
 		if(grav >= 0) gravity = Math.sqrt(grav);
 		if(grav < 0) gravity = -Math.sqrt(-grav);
-		if(!onob && submerged != 1 && !climbing) vy = Math.min(vy+gravity,25);
+		if(!onob && submerged != 1 && !climbing) vy = Math.min(vy+gravity,25 - (id == 13)*22);
 		if(onob || control || charState == 12 || skater > -1){
 			vx = (vx-fricGoal)*friction+fricGoal;
 		}else{
